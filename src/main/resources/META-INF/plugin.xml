@@ -10,10 +10,26 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="org.jetbrains.plugins.template.services.MyApplicationService"/>
         <projectService serviceImplementation="org.jetbrains.plugins.template.services.MyProjectService"/>
+
+        <applicationConfigurable parentId="tools"
+                                 instance="org.jetbrains.plugins.template.config.PluginSettingsConfigurable"
+                                 id="org.jetbrains.plugins.template.config.PluginSettingsConfigurable"/>
     </extensions>
 
     <applicationListeners>
         <listener class="org.jetbrains.plugins.template.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+
+    <actions>
+        <action class="org.jetbrains.plugins.template.WisdomAction">
+            <keyboard-shortcut first-keystroke="alt o" second-keystroke="alt w" keymap="$default"/>
+        </action>
+        <action class="org.jetbrains.plugins.template.PopupWisdomAction">
+            <keyboard-shortcut first-keystroke="alt o" second-keystroke="alt p" keymap="$default"/>
+        </action>
+        <action class="org.jetbrains.plugins.template.OctRetrieveServiceTokenAction">
+            <keyboard-shortcut first-keystroke="alt o" second-keystroke="alt t" keymap="$default"/>
+        </action>
+    </actions>
 </idea-plugin>
